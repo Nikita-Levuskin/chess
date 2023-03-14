@@ -5,20 +5,38 @@
 
 using namespace std;
 
+string word_list[8] = {"a", "b", "c", "d", "e", "f", "g", "h"};
+int number_list[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+
 std::pair<int, int> figure_location(string figure) {
 	cin.clear();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	bool par = false;
+	bool parm1 = false;
+	bool parm2 = false;
+	cin.clear();
 	cout << "Укажите столбец(a-h) и строку(1-8) " << figure << " через пробел: ";
 	cin >> x_figure;
 	cin.clear();
 	cin >> y_figure;
-	return std::make_pair(x_figure, y_figure);
+	cin.clear();
+
+	for (int i = 0; i < 8; i++) {
+		if (x_figure == word_list[i]) {
+			x_int = i + 1;
+			parm1 = true;
+		}
+		if (y_figure == number_list[i]) {
+			parm2 = true;
+		}
+		if (parm1 == true && parm2 == true) {
+			return std::make_pair(x_int, y_figure);
+		}
+	}
+	figure_location(figure);
 }
 
-
-
-int main()
-{
+int main()	{
 	setlocale(LC_ALL, "ru");
 	cout << "Нажмите любую кнопку чтобы начать";
 
