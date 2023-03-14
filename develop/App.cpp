@@ -52,8 +52,12 @@ int main()	{
 	x_black_rook = c.first;
 	y_black_rook = c.second;
 
-	check_elephant(x_white_king, y_white_king, x_black_elephant, y_black_elephant);
-	check_rook(x_white_king, y_white_king, x_black_rook, y_black_rook);
+	int f = check_elephant(x_white_king, y_white_king, x_black_elephant, y_black_elephant);
+	int g = check_rook(x_white_king, y_white_king, x_black_rook, y_black_rook);
+
+	if (f + g == 2) {
+		cout << "Нет шаха";
+	}
 
 	return 0;
 }
