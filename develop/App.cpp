@@ -54,7 +54,40 @@ int overlapped_figures(string figures) {
 		return 0;
 	}
 	if (figures == "rook") {
-		return 0
+		if (y_black_rook == y_white_king) {
+			if (x_black_rook > x_white_king) {
+				for (int i = x_black_rook; i >= x_white_king; i--) {		
+					if (i == x_black_elephant && y_black_rook == y_black_elephant) {
+						return 1;
+					}
+				}
+			}
+			else {
+				for (int i = x_black_rook; i <= x_white_king; i++) {
+					if (i == x_black_elephant && y_black_rook == y_black_elephant) {
+						return 1;
+					}
+				}
+			}
+		}
+		else {
+			if (y_black_rook > y_white_king) {
+				for (int i = y_black_rook; i >= y_white_king; i--) {
+					if (i == y_black_elephant && x_black_rook == x_black_elephant) {
+						return 1;
+					}
+				}
+			}
+			else {
+				for (int i = y_black_rook; i <= y_white_king; i++) {
+					if (i == y_black_elephant && x_black_rook == x_black_elephant) {
+						return 1;
+					}
+				}
+			}
+		}
+		cout << "шах от ладьи";
+		return 0;
 	}
 }
 
@@ -104,8 +137,6 @@ int main() {
 
 	int e = check_elephant(x_white_king, y_white_king, x_black_elephant, y_black_elephant);
 	int r = check_rook(x_white_king, y_white_king, x_black_rook, y_black_rook);
-
-	int s = 0;
 
 	if (e == 0) {
 		e = overlapped_figures("elephant");
